@@ -1,0 +1,15 @@
+{
+	"name": "helpbubble",
+	"version": "0.0.1",
+	"description": "Node.js module to implement a realtime commenting system",
+	"preferGlobal": "true",
+	"main": "index.js",
+	"author": "",
+	"bin": "",
+	"keywords": ["realtime", "help"],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rjw245/tuftshackS2014.git"
+	},
+	"dependencies": {
+		"socket.io": 
