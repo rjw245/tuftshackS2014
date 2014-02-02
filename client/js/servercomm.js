@@ -1,8 +1,18 @@
 $("document").load(function() {
 	var sock = io.connect();
-
+	var messages = [];
 	sock.on('message', function(msg) {
-		//FANCY JQUERY MOKEYING
+		//Add to map
+		messages[msg.msgID] = msg;
+
+		//Display in proper place
+		if(messages[msg.msgID].repID != ''){
+			//Add to existing message div
+			$('#'+messages[msg.msgID].repID).add();
+		}
+		else{
+			//Add div to room
+		}
 	});
 
 	$("#chatInput").bind("enterKey", function(e) {
@@ -28,5 +38,5 @@ $("document").load(function() {
 
   	$(".reply").bind("getChat", function(e) {
   		//MONKEYING
-  	})
-})
+  	});
+});
