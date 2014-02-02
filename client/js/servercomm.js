@@ -1,4 +1,5 @@
 $("document").load(function() {
+	console.log("serverconn init");
 	var swig = require("swig");
 	var sock = io.connect();
 	var messages = [];
@@ -29,18 +30,23 @@ $("document").load(function() {
 
 	$("#chatInput").bind("enterKey", function(e) {
 		//MORE FANCY JQUERY MONKEYING
-		send($('#subjectBox').val,$('#messageBox').val,$('.selectedReply').attr('id'),$('.currentRoom').attr('id'))
-		
+		//send($('#subjectBox').val,$('#messageBox').val,$('.selectedReply').attr('id'),$('.currentRoom').attr('id'))
+		console.log("enter");
 	});
 
 	function send(sub,txt,repID,roomID){
 		sock.emit('message', sub, txt, repID, roomID);
 	}
 
-	$("#chatInput").keyUp(function(e) {
-		if (e.keyCode == 13) {
-			$(this).trigger("enterKey");
-		}
+	$("#chatInput").keyup(function() {
+		//if (e.keyCode == 13) {
+			//$(this).trigger("enterKey");
+		//}
+		alert('Handler of .keyUp called');
+	});
+
+	$("#sendButton").click(function() {
+		console.log("received");
 	});
 
 	$(".reply").click(function(){

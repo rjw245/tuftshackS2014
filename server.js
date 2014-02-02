@@ -87,13 +87,13 @@ io.on('connection', function (socket) {
     socket.on('message', function (subject,msg,repl,roomID) {
       var subj = String(subject || '');
       var text = String(msg || '');
+	  console.log(text);
 
       if (!text)
         return;
 
       socket.get('name', function (err, name) {
         
-
         socket.get('id', function (err, userid) {
           //INSERT IN DATABASE
           db.serialize(function() {

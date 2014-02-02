@@ -8,10 +8,16 @@
 		<!--<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Droid+Sans' rel='stylesheet' type='text/css' />-->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{% block title %}TuftsTalk{% endblock %}</title>
-		{% block head %}
-		{% endblock %}
 	</head>
 	<body>
+		{% block scripts %}
+		<!--<script src="/client/js/tuftstalk.js" type="text/javascript"></script>-->
+		<script src="/client/js/jquery.min.js"></script>
+		<script src="/client/js/servercomm.js"></script>
+		<script src="/client/js/bootstrap.min.js"></script>
+		<script src="/client/js/socket.io.min.js"></script>
+		<script src="/client/js/swig.min.js"></script>
+		{% endblock %}
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 header">
@@ -21,7 +27,7 @@
 			{% endblock %}
 			<div class="row">
 				<div class="col-md-12 replies">
-					{% block main-body %}{% endblock %}		
+					{% block main-body %}{% endblock %}
 				</div>
 			</div>
 			<div class="row bottom">
@@ -30,9 +36,7 @@
 				</div>
 			</div>
 		</div>
-	</body>
-		{% block scripts %}
-		<!--<script src="/client/js/tuftstalk.js" type="text/javascript"></script>-->
-		<script src="/client/js/bootstrap.min.js"></script>
+		{% block head %}
 		{% endblock %}
+	</body>
 </html>
