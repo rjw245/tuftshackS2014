@@ -25,6 +25,21 @@ var io = socketio.listen(server);
 
 router.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
+db.serialize(function(){
+  db.each("SELECT message_id AS id, subject, content, reply_id, username FROM messages JOIN users ON messages.user_id = users.user_id", function(err, row) {
+      console.log(row.id + ": " + row.info);
+      var time = (new Date()).getTime();
+      var data = {
+        name: row.username,
+        subj: row.subject,
+        text: row.content,
+        msgID: row.id,
+        repID: row.reply_id,
+        time: time
+      };
+      messages.push(data)
+  });
+});
 var sockets = [];
 
 io.on('connection', function (socket) {
@@ -58,7 +73,9 @@ io.on('connection', function (socket) {
                 name: name,
                 subj: subj,
                 text: text,
-                repl: this.lastID
+                msgID: this.lastID,
+                repID: repl,
+                time: time
               };
 
               broadcast('message', data);
