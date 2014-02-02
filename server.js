@@ -53,22 +53,19 @@ io.on('connection', function (socket) {
           //INSERT IN DATABASE
           db.serialize(function() {
             var time = (new Date()).getTime();
-            var stmt = db.prepare("INSERT INTO messages VALUES(NULL,?,?,?,?,?,?)");
-            var userid =
-            stmt.run(id,subj,text,time,'');
-            stmt.finalize();
+            db.run("INSERT INTO messages VALUES(NULL,?,?,?,?,?,?)",[id,subj,text,time,repl], function(error,data){
+              var data = {
+                name: name,
+                subj: subj,
+                text: text,
+                repl: this.lastID
+              };
+
+              broadcast('message', data);
+              messages.push(data);
+            });
           });
         });
-
-        var data = {
-          name: name,
-          subj: subj,
-          text: text,
-          repl: repl
-        };
-
-        broadcast('message', data);
-        messages.push(data);
       });
 
     });
