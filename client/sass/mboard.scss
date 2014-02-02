@@ -6,6 +6,7 @@ $blue2: lighten($blue1, 10%); /*the reply hover bg color*/
 $blue3: "#00005C"; /*the post bg color*/
 $blue4: lighten($blue3, 10%); /*the post hover bg color*/
 $bg: "#D6EBFF"; /*the bg color*/
+$chatbg: darken($bg, 10%); /*the chat bg color*/
 $black1: "#000000"; /*the black font color*/
 
 .postpage {
@@ -72,10 +73,12 @@ $black1: "#000000"; /*the black font color*/
 }
 
 .chat {
-	background-color: $bg;
+	background-color: $chatbg;
+	border-radius:15px;
+	padding:10px 25px;
+	width: 100%;
 	p {
 		font-color: $black1;
 		font-family: $sans;
 	}
 }
-
