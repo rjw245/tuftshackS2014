@@ -1,0 +1,13 @@
+{
+  "name": "TuftsTalk",
+  "version": "0.0.1",
+  "description": "TuftsTalk!",
+  "main": "server.js",
+  "author": "TuftHack",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "socket.io": "~0.9.14",
+	"swig": "1.3.2",
+  }
+}

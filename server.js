@@ -9,6 +9,7 @@ var path = require('path');
 var async = require('async');
 var socketio = require('socket.io');
 var express = require('express');
+var swig = require('swig');
 
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('database.db');
@@ -20,6 +21,34 @@ var db = new sqlite3.Database('database.db');
 //  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
 //
 var router = express();
+router.engine('html', swig.renderFile);
+router.set('view_engine', 'html');
+router.set('views', __dirname + '/views');
+
+router.set('view cache', false);
+swig.setDefaults({ cache: false });
+
+router.get('/', function (req, res) {
+	res.render('post.html', { 
+		post: {
+			author: "me",
+			time: "2014-01-02",
+			subject: "Testing",
+			content: "pray to god this works",
+			title: "test",
+			replies: [
+				{
+					author: "you",
+					content: "test reply",
+					time: "2014-01-02",
+				},
+			]
+		}
+	});
+});
+
+router.use("/client", express.static(__dirname + "/client"));
+
 var server = http.createServer(router);
 var io = socketio.listen(server);
 
