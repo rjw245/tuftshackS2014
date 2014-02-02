@@ -4,57 +4,61 @@
 /*the post bg color*/
 /*the post hover bg color*/
 /*the bg color*/
+/*the chat bg color*/
 /*the black font color*/
 .postpage {
-  background-color: "#D6EBFF"; }
+  background-color: #d6ebff; }
 
 .post {
-  background-color: "#00005C";
+  background-color: #00005c;
   width: 100%; }
   .post p {
-    font-color: "#FFFFFF";
+    font-color: white;
     font-family: "Droid Sans", sans-serif; }
   .post :hover {
-    background-color: "33337D"; }
+    background-color: #33337d; }
 
 .post-subject {
   font-family: "Droid Sans", sans-serif;
-  font-color: "#FFFFFF";
+  font-color: white;
   font-size: 12pt; }
 
 .post-name {
   font-family: "Droid Sans", sans-serif;
-  font-color: "#FFFFFF";
+  font-color: white;
   font-size: 11pt; }
 
 .post-content {
   font-family: "Droid Sans", sans-serif;
-  font-color: "#FFFFFF";
+  font-color: white;
   font-size: 18pt; }
 
 .reply {
-  background-color: "#70B8FF";
+  background-color: #70b8ff;
   border-radius: 15px;
   padding: 10px 25px;
   .selected-width: 100%; }
   .reply p {
-    font-color: "#000000";
+    font-color: black;
     font-family: "Droid Sans", sans-serif; }
   .reply :hover {
-    background-color: "#9BCDFF"; }
+    background-color: #9bcdff; }
 
 .reply-name {
   font-family: "Droid Sans", sans-serif;
-  font-color: "#000000";
+  font-color: black;
   font-size: 10pt; }
 
 .reply-content {
   font-family: "Droid Sans", sans-serif;
-  font-color: "#000000";
+  font-color: black;
   font-size: 12pt; }
 
 .chat {
-  background-color: "#D6EBFF"; }
+  background-color: #a3d2ff;
+  border-radius: 15px;
+  padding: 10px 25px;
+  width: 100%; }
   .chat p {
-    font-color: "#000000";
+    font-color: black;
     font-family: "Droid Sans", sans-serif; }
