@@ -1,13 +1,13 @@
 $mono: "Droid Sans Mono", sans-serif;
 $sans: "Droid Sans", sans-serif;
-$white: "#FFFFFF"; /*the post font color*/
-$blue1: "#70B8FF"; /*the reply bg color*/
-$blue2: "#9BCDFF"; /*the reply hover bg color*/
-$blue3: "#00005C"; /*the post bg color*/
-$blue4: "33337D"; /*the post hover bg color*/
-$bg: "#D6EBFF"; /*the bg color*/
-$chatbg: darken($bg, 10%); /*the chat bg color*/
-$black1: "#000000"; /*the black font color*/
+$white: #FFFFFF; /*the post font color*/
+$blue1: #70B8FF; /*the reply bg color*/
+$blue2: #9BCDFF; /*the reply hover bg color*/
+$blue3: #00005C; /*the post bg color*/
+$blue4: #33337D; /*the post hover bg color*/
+$bg: #D6EBFF; /*the bg color*/
+$chatbg: lighten($bg, 10%); /*the chat bg color*/
+$black1: #000000; /*the black font color*/
 
 .postpage {
     background-color: $bg;
@@ -34,27 +34,20 @@ $black1: "#000000"; /*the black font color*/
 
 .post-name {
 	font-family: $sans;
-	font-color: $white;
+	color: $white;
 	font-size: 11pt;
 }
 
 .post-content {
 	font-family: $sans;
-	font-color: $white;
+	color: $white;
 	font-size: 18pt;
 }
 
 .reply {
-	background-color: $blue1;
-	border-radius:15px;
-	padding:10px 25px;
-	p {
-		font-color: $black1;
-		font-family: $sans;
-	}
-	:hover {
-		background-color: $blue2;
-	}
+	/*div:hover {*/
+		/*background-color: $blue2;*/
+	/*}*/
 	.selected: {
 		width: 100%
 	}
@@ -81,4 +74,10 @@ $black1: "#000000"; /*the black font color*/
 		font-color: $black1;
 		font-family: $sans;
 	}
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0;
+	width: 90%;
 }

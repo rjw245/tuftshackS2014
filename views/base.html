@@ -17,9 +17,16 @@
 				<div class="col-md-12 header">
 				</div>
 			</div>
+			{% block post %}
+			{% endblock %}
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-12">
 					{% block main-body %}{% endblock %}		
+				</div>
+			</div>
+			<div class="row bottom">
+				<div class="chatDiv col-md-12">
+					{% block textinput %} {% endblock %}
 				</div>
 			</div>
 		</div>
