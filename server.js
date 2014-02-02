@@ -26,8 +26,8 @@ var io = socketio.listen(server);
 router.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
 db.serialize(function(){
-  db.each("SELECT message_id AS id, subject, content, reply_id, username FROM messages JOIN users ON messages.user_id = users.user_id", function(err, row) {
-      console.log(row.id + ": " + row.info);
+  db.each("SELECT message_id AS id, subject, content, reply_id, room_id, username FROM messages JOIN users ON messages.user_id = users.user_id", function(err, row) {
+      console.log(row.id + ": " + row.username);
       var time = (new Date()).getTime();
       var data = {
         name: row.username,
@@ -35,7 +35,8 @@ db.serialize(function(){
         text: row.content,
         msgID: row.id,
         repID: row.reply_id,
-        time: time
+        time: time,
+        roomID: row.room_id
       };
       messages.push(data)
   });
@@ -54,7 +55,7 @@ io.on('connection', function (socket) {
       updateRoster();
     });
 
-    socket.on('message', function (subject,msg,repl) {
+    socket.on('message', function (subject,msg,repl,roomID) {
       var subj = String(subject || '');
       var text = String(msg || '');
 
@@ -64,18 +65,19 @@ io.on('connection', function (socket) {
       socket.get('name', function (err, name) {
         
 
-        socket.get('id', function (err, id) {
+        socket.get('id', function (err, userid) {
           //INSERT IN DATABASE
           db.serialize(function() {
             var time = (new Date()).getTime();
-            db.run("INSERT INTO messages VALUES(NULL,?,?,?,?,?,?)",[id,subj,text,time,repl], function(error,data){
+            db.run("INSERT INTO messages VALUES(NULL,?,?,?,?,?,?)",[userid,subj,text,time,repl,roomID], function(error,data){
               var data = {
                 name: name,
                 subj: subj,
                 text: text,
                 msgID: this.lastID,
                 repID: repl,
-                time: time
+                time: time,
+                roomID: roomID
               };
 
               broadcast('message', data);
