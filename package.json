@@ -1,15 +1,13 @@
 {
-	"name": "helpbubble",
-	"version": "0.0.1",
-	"description": "Node.js module to implement a realtime commenting system",
-	"preferGlobal": "true",
-	"main": "index.js",
-	"author": "",
-	"bin": "",
-	"keywords": ["realtime", "help"],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rjw245/tuftshackS2014.git"
-	},
-	"dependencies": {
-		"socket.io": 
+  "name": "chat-example",
+  "version": "0.0.0",
+  "description": "A chat example to showcase how to use `socket.io` with a static `express` server",
+  "main": "server.js",
+  "repository": "",
+  "author": "Mostafa Eweda <mostafa@c9.io>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "socket.io": "~0.9.14"
+  }
+}
