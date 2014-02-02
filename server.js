@@ -39,37 +39,45 @@ io.on('connection', function (socket) {
       updateRoster();
     });
 
-    socket.on('message', function (msg) {
+    socket.on('message', function (subject,msg,repl) {
+      var subj = String(subject || '');
       var text = String(msg || '');
 
       if (!text)
         return;
 
       socket.get('name', function (err, name) {
+        
+
+        socket.get('id', function (err, id) {
+          //INSERT IN DATABASE
+          db.serialize(function() {
+            var time = (new Date()).getTime();
+            var stmt = db.prepare("INSERT INTO messages VALUES(NULL,?,?,?,?,?,?)");
+            var userid =
+            stmt.run(id,subj,text,time,'');
+            stmt.finalize();
+          });
+        });
+
         var data = {
           name: name,
-          text: text
+          subj: subj,
+          text: text,
+          repl: repl
         };
 
         broadcast('message', data);
         messages.push(data);
       });
 
-      //INSERT IN DATABASE
-      db.serialize(function() {
-        var time = (new Date()).getTime();
-        var stmt = db.prepare("INSERT INTO messages VALUES(NULL,'1','THIS IS MY SUBJECT',?,"+time+",'2')");
-        stmt.run(msg);
-        stmt.finalize();
-      });
-      //db.close();
-
     });
 
-    socket.on('identify', function (name) {
+    socket.on('identify', function (name,id) {
       socket.set('name', String(name || 'Anonymous'), function (err) {
         updateRoster();
       });
+      socket.set('id', String(id || '0'));
 
     });
   });
