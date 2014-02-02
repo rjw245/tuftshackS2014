@@ -4,14 +4,24 @@ $("document").load(function() {
 	sock.on('message', function(msg) {
 		//Add to map
 		messages[msg.msgID] = msg;
+		messages[msg.msgID].msgType = '';
 
 		//Display in proper place
 		if(messages[msg.msgID].repID != ''){
 			//Add to existing message div
-			$('#'+messages[msg.msgID].repID).add();
+			if(messages[ messages[msg.msgID].repID ].repID != ''){
+				//This is a chat message
+				messages[msg.msgID].msgType = 'chat';
+
+			}
+			else{
+				//This is a reply to a main topic
+				messages[msg.msgID].msgType = 'reply';
+			}
 		}
 		else{
-			//Add div to room
+			//This is a main topic
+			messages[msg.msgID].msgType = 'topic';
 		}
 	});
 
@@ -19,7 +29,7 @@ $("document").load(function() {
 		//MORE FANCY JQUERY MONKEYING
 		send($('#subjectBox').val,$('#messageBox').val,$('.selectedReply').attr('id'),$('.currentRoom').attr('id'))
 		
-	})
+	});
 
 	function send(sub,txt,repID,roomID){
 		sock.emit('message', sub, txt, repID, roomID);
@@ -34,6 +44,8 @@ $("document").load(function() {
 	$(".reply").click(function(){
     	$(this).siblings().fadeOut('slow');
     	$(this).trigger('getChat');
+    	$('.selectedReply').removeClass('.selectedReply');
+    	$(this).addClass('.selectedReply');
   	});
 
   	$(".reply").bind("getChat", function(e) {
