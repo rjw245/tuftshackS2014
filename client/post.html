@@ -1,0 +1,19 @@
+{% block title %}{{ post.title }}{% endblock %}
+{% block head %}
+{% endblock %}
+{% block main-body %}
+<div class="row">
+	<div class="col-md-12 post">
+		<div class="post-name">{{ post.author }} on {{ post.date}} wrote:</div>
+		<div class="post-content">{{ post.content }}</div>
+	</div>
+</div>
+{% for reply in post.replies %}
+<div class="row">
+	<div class="col-md-12 reply">
+		<div class="reply-name">{{ reply.author }}</div>
+		<div class="reply-content">{{ reply.content }}</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}
