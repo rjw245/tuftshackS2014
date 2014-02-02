@@ -2,19 +2,35 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block head %}
 {% endblock %}
-{% block main-body %}
+{% block post %}
 <div class="row">
 	<div class="post col-md-12">
-		<div class="post-name">{{ post.author }} on {{ post.time}} wrote:</div>
-		<div class="post-content">{{ post.content }}</div>
+		<hr />
+		<div class="post-name h4">{{ post.author }} on {{ post.time}} wrote:</div>
+		<div class="post-content h2">{{ post.content }}</div>
+	</div>
+</div>
+{% endblock %}
+{% block main-body %}
+<div class="row">
+	<div class="col-md-12">
+		<hr />
 	</div>
 </div>
 {% for reply in post.replies %}
 <div class="row">
-	<div class="reply col-md-12">
+	<div class="col-md-11 alert alert-info reply">
 		<div class="reply-name">{{ reply.author }}</div>
 		<div class="reply-content">{{ reply.content }}</div>
 	</div>
 </div>
 {% endfor %}
+{% endblock %}
+{% block textinput %}
+<div class="input-group">
+	<input type="text" class="form-control"></input>
+	<span class="input-group-btn">
+		<button class="btn btn-default">Send</button>
+	</span>
+</div>
 {% endblock %}

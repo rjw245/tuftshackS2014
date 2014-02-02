@@ -25,24 +25,19 @@
 
 .post-name {
   font-family: "Droid Sans", sans-serif;
-  font-color: white;
+  color: white;
   font-size: 11pt; }
 
 .post-content {
   font-family: "Droid Sans", sans-serif;
-  font-color: white;
+  color: white;
   font-size: 18pt; }
 
 .reply {
-  background-color: #70b8ff;
-  border-radius: 15px;
-  padding: 10px 25px;
+  /*div:hover {*/
+  /*background-color: $blue2;*/
+  /*}*/
   .selected-width: 100%; }
-  .reply p {
-    font-color: black;
-    font-family: "Droid Sans", sans-serif; }
-  .reply :hover {
-    background-color: #9bcdff; }
 
 .reply-name {
   font-family: "Droid Sans", sans-serif;
@@ -55,10 +50,15 @@
   font-size: 12pt; }
 
 .chat {
-  background-color: #a3d2ff;
+  background-color: white;
   border-radius: 15px;
   padding: 10px 25px;
   width: 100%; }
   .chat p {
     font-color: black;
     font-family: "Droid Sans", sans-serif; }
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 90%; }
