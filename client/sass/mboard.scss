@@ -1,0 +1,50 @@
+$mono: "Droid Sans Mono", sans-serif;
+$sans: "Droid Sans", sans-serif;
+$blue1: ""; /*the reply bg color*/
+$blue2: ""; /*the reply hover bg color*/
+$blue3: ""; /*the post bg color*/
+$blue4: ""; /*the post hover bg color*/
+$white1: ""; /*the postpage bg color*/
+$white2: ""; /*the chat bg color*/
+$black1: ""; /*the black font color*/
+
+.postpage {
+    background-color: $white1;
+}
+
+.post {
+    background-color: $blue3;
+	width: 100%;
+	p {
+		font-color: $white1;
+		font-family: $sans;
+	}
+	:hover {
+		background-color: $blue4;
+	}
+}
+
+.reply {
+	background-color: $blue1;
+	p {
+		font-color: $black1;
+		font-family: $sans;
+	}
+	:hover {
+		background-color: $blue2;
+	}
+	.selected: {
+		width: 100%
+	}
+}
+
+.chat {
+	background-color: $white2;
+	p {
+		font-color: $black1;
+		font-family: $sans;
+	}
+	:hover {
+		background-color: $white3;
+	}
+}
