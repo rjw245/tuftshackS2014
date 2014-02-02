@@ -4,10 +4,12 @@
 {% endblock %}
 {% block post %}
 <div class="row">
-	<div class="post col-md-12">
-		<hr />
-		<div class="post-name h4">{{ post.author }} on {{ post.time}} wrote:</div>
-		<div class="post-content h2">{{ post.content }}</div>
+	<div class="panel panel-primary">
+		<div class="post-name panel-heading">
+			{{ post.author }} on {{ post.time}} wrote: <br />
+			<hr />
+			<h3>{{ post.content }}</h3>
+		</div>
 	</div>
 </div>
 {% endblock %}
