@@ -1,6 +1,8 @@
 $("document").load(function() {
+	var swig = require("swig");
 	var sock = io.connect();
 	var messages = [];
+	var msgTemplate = '{% if msgType == reply %}<div class="row"><div id="{{ msgID }}" class="alert alert-info reply"><div class="reply-name">{{ name }}</div><div class="reply-content">{{ text }}</div></div></div>{% else %}<div id="{{ msgID }}" class="panel panel-default"><div class="panel-heading">{{ name}}: {{ text }}</div></div>{% endif %}';
 	sock.on('message', function(msg) {
 		//Add to map
 		messages[msg.msgID] = msg;
