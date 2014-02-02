@@ -7,7 +7,14 @@ $("document").load(function() {
 
 	$("#chatInput").bind("enterKey", function(e) {
 		//MORE FANCY JQUERY MONKEYING
+		send($('#subjectBox').val,$('#messageBox').val,$('.selectedReply').attr('id'),$('.currentRoom').attr('id'))
+		
 	})
+
+	function send(sub,txt,repID,roomID){
+		sock.emit('message', sub, txt, repID, roomID);
+	}
+
 	$("#chatInput").keyUp(function(e) {
 		if (e.keyCode == 13) {
 			$(this).trigger("enterKey");
